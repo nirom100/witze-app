@@ -17,12 +17,12 @@
     <div id="app">
       <h1 class="heading">Witze App</h1>
       <div class="joke">
-        <div class="joke__text">
+        <div class="joke__text" id="joke__text">
           Klicke auf den Button um einen Witz zu laden!
         </div>
         <div class="joke__buttons">
-          <button class="joke__load">Neuen Witz laden</button>
-          <button class="joke__save">
+          <button class="joke__load" id="joke__load">Neuen Witz laden</button>
+          <button class="joke__save joke__save--disabled" id="joke__save">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -45,57 +45,7 @@
 
       <div class="saved-jokes">
         <h2 class="saved-jokes__heading">Gespeicherte Witze</h2>
-        <div class="saved-jokes__list">
-          <div class="saved-jokes__joke">
-            <p class="saved-jokes__text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe
-              mollitia ratione nulla ipsa similique tempore enim consequatur
-              corporis nihil a doloremque, repellendus repellat dolorum, minus
-              quas, praesentium libero numquam corrupti..
-            </p>
-            <button class="saved-jokes__remove">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="saved-jokes__remove-icon"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <div class="saved-jokes__joke">
-            <p class="saved-jokes__text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe
-              mollitia ratione nulla ipsa consequatur corporis nihil a
-              doloremque, repellendus repellat dolorum, minus quas, praesentium
-              libero numquam corrupti..
-            </p>
-            <button class="saved-jokes__remove">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="saved-jokes__remove-icon"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="m3 3 1.664 1.664M21 21l-1.5-1.5m-5.485-1.242L12 17.25 4.5 21V8.742m.164-4.078a2.15 2.15 0 0 1 1.743-1.342 48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185V19.5M4.664 4.664 19.5 19.5"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+        <div class="saved-jokes__list" id="saved-jokes__list"></div>
       </div>
     </div>
     <script type="module" src="/src/main.js"></script>
