@@ -1,0 +1,12 @@
+$text: #ece6f3;
+$accent: #33dc3c;
+$bg: #2a2a2a;
+
+$sans: "Inter", system-ui, Roboto, sans-serif;
+$heading: "Rubik Scribble", system-ui, Roboto, sans-serif;
+
+@mixin tablet-and-up() {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
