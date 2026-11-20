@@ -1,9 +1,13 @@
 $text: #ece6f3;
 $accent: #33dc3c;
 $bg: #2a2a2a;
-
 $sans: "Inter", system-ui, Roboto, sans-serif;
 $heading: "Rubik Scribble", system-ui, Roboto, sans-serif;
+
+$text-light: #100a17;
+$accent-light: #7d51af;
+$bg-light: #ece6f3;
+$heading-light: "Nothing You Could Do", cursive;
 
 @mixin tablet-and-up() {
   @media only screen and (min-width: 600px) {

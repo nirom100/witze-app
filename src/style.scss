@@ -1,8 +1,15 @@
 @use "variables";
 
-@mixin theme($theme: variables.$bg) {
-  background-color: $theme;
-  color: variables.$text;
+@mixin theme($bg, $text, $accent, $heading) {
+  --bg: #{$bg};
+  --text: #{$text};
+  --accent: #{$accent};
+  --heading: #{$heading};
+  --surface: #{adjust-color($bg, $lightness: 15%)};
+  --accent-hover: #{adjust-color($accent, $lightness: -10%)};
+
+  background-color: var(--bg);
+  color: var(--text);
   font-family: variables.$sans;
 }
 
@@ -12,7 +19,39 @@
 }
 
 body {
-  @include theme;
+  @include theme(
+    variables.$bg,
+    variables.$text,
+    variables.$accent,
+    variables.$heading
+  );
+}
+
+body.theme-light {
+  @include theme(
+    variables.$bg-light,
+    variables.$text-light,
+    variables.$accent-light,
+    variables.$heading-light
+  );
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: variables.$sans;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
 }
 
 #app {
@@ -29,14 +68,14 @@ body {
 }
 
 .heading {
-  color: variables.$accent;
-  font-family: variables.$heading;
+  color: var(--accent);
+  font-family: var(--heading);
   font-size: 4rem;
   padding-bottom: 2rem;
 }
 
 .joke {
-  background: adjust-color(variables.$bg, $lightness: 15%);
+  background: var(--surface);
   padding: 2rem;
 
   &__text {
@@ -50,13 +89,17 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
+
+    @include variables.tablet-and-up() {
+      flex-direction: row;
+    }
   }
 
   &__load,
   &__save {
     font-size: 1rem;
     padding: 1rem 1.5rem;
-    border: 1px solid variables.$accent;
+    border: 1px solid var(--accent);
     border-radius: 5px;
     transition: 0.2s all ease-in-out;
     cursor: pointer;
@@ -64,18 +107,18 @@ body {
 
   &__load,
   &__save:hover {
-    background-color: variables.$accent;
-    color: adjust-color(variables.$bg, $lightness: 15%);
+    background-color: var(--accent);
+    color: var(--surface);
   }
 
   &__load:hover {
-    border: 1px solid adjust-color(variables.$accent, $lightness: -10%);
-    background-color: adjust-color(variables.$accent, $lightness: -10%);
+    border: 1px solid var(--accent-hover);
+    background-color: var(--accent-hover);
   }
 
   &__save {
     background: transparent;
-    color: variables.$accent;
+    color: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,7 +139,7 @@ body {
 
   &__heading {
     text-align: center;
-    font-family: variables.$heading;
+    font-family: var(--heading);
     font-size: 2.5rem;
     padding-bottom: 2rem;
 
@@ -112,11 +155,11 @@ body {
   }
 
   &__joke {
-    background-color: adjust-color(variables.$bg, $lightness: 15%);
+    background-color: var(--surface);
     padding: 1rem;
     display: flex;
     align-items: center;
-    justify-self: center;
+    justify-content: space-between;
     gap: 1rem;
   }
 
